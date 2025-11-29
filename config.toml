@@ -1,0 +1,44 @@
+baseURL = "https://niyaznurbhasha.github.io/95dogs/"
+languageCode = "en-us"
+title = "Portfolio"
+theme = "hello-friend"
+
+# Some extra recommended configuration options
+paginate = 5
+defaultContentLanguage = "en"
+
+[params]
+customCSS = ["css/custom.css"]
+defaultTheme = "dark"
+
+[params.logo]
+  logoText = " "
+  logoHomeLink = "/"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "animation"
+    name = "Animations"
+    url = "/animation/"
+    weight = 2
+  [[menu.main]]
+    identifier = "fitness-ai"
+    name = "Fitness Agent"
+    url = "/fitness-ai/"
+    weight = 3
+  [[menu.main]]
+    identifier = "mental-health-ai"
+    name = "Support Bot"
+    url = "/mental-health-ai/"
+    weight = 4
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+

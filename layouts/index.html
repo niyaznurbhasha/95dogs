@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>95 Dogs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            background: #000;
+        }
+
+        #animation-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            z-index: 9999;
+        }
+
+        .flash-white {
+            animation: flashWhite 0.5s ease-in-out;
+        }
+
+        @keyframes flashWhite {
+            0% { background: #000; }
+            50% { background: #fff; }
+            100% { background: #000; }
+        }
+
+        #logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            max-height: 400px;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+        }
+
+        #logo.visible {
+            opacity: 1;
+        }
+
+        .corner-nav {
+            position: fixed;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 2px;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .corner-nav:hover {
+            opacity: 1 !important;
+        }
+
+        #merch {
+            top: 30px;
+            left: 30px;
+        }
+
+        #tour {
+            top: 30px;
+            right: 30px;
+        }
+
+        #faq {
+            bottom: 30px;
+            left: 30px;
+        }
+
+        #contact {
+            bottom: 30px;
+            right: 30px;
+        }
+
+        .corner-nav.bright {
+            opacity: 1;
+        }
+
+        .corner-nav.dim {
+            opacity: 0.05;
+        }
+    </style>
+</head>
+<body>
+    <div id="animation-container">
+        <img id="logo" src="/img/funny.png" alt="95 Dogs Logo">
+        
+        <a href="/merch" id="merch" class="corner-nav">MERCH</a>
+        <a href="/tour" id="tour" class="corner-nav">TOUR</a>
+        <a href="/faq" id="faq" class="corner-nav">FAQ</a>
+        <a href="/contact" id="contact" class="corner-nav">CONTACT</a>
+    </div>
+
+    <script>
+        const container = document.getElementById('animation-container');
+        const logo = document.getElementById('logo');
+        const cornerNavs = document.querySelectorAll('.corner-nav');
+
+        // Animation sequence
+        setTimeout(() => {
+            // Flash white at 0.5s
+            container.classList.add('flash-white');
+            
+            setTimeout(() => {
+                container.classList.remove('flash-white');
+                // Show logo
+                logo.classList.add('visible');
+                
+                // Show corner words at full brightness
+                cornerNavs.forEach(nav => {
+                    nav.classList.add('bright');
+                });
+
+                // After 1 second, dim the corner words to 5% opacity
+                setTimeout(() => {
+                    cornerNavs.forEach(nav => {
+                        nav.classList.remove('bright');
+                        nav.classList.add('dim');
+                    });
+                }, 1000);
+            }, 500);
+        }, 500);
+
+        // Logo click handler
+        logo.addEventListener('click', () => {
+            window.location.href = '/content';
+        });
+    </script>
+</body>
+</html>
+
