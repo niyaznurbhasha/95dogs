@@ -10,7 +10,7 @@ This is a custom Hugo-based website with an animated landing page and navigation
 1. **Initial Black Screen** (0.5 seconds)
 2. **White Flash** - Brief white flash revealing the logo
 3. **Full Brightness Navigation** (1 second) - The four corner words (MERCH, TOUR, FAQ, CONTACT) appear at full brightness
-4. **Dimmed State** - Corner words fade to 5% opacity, logo remains fully visible
+4. **Dimmed State** - Corner words and logo fade to 20% opacity (brighten to full on hover)
 
 ### Navigation
 - **Logo Click** → Takes you to the filmmaker content showcase
@@ -69,11 +69,12 @@ All pages use a black background (`#000`) with white text (`#fff`). To customize
 - Edit the CSS in each layout file under `layouts/` directory
 - Main colors are defined in the `<style>` sections
 
-#### Modifying Animation Timing
+#### Modifying Animation Timing & Opacity
 In `layouts/index.html`, you can adjust:
-- Initial black screen: Line 129 - `setTimeout(..., 500)` (500ms = 0.5s)
-- Navigation brightness duration: Line 143 - `setTimeout(..., 1000)` (1000ms = 1s)
-- White flash duration: CSS animation on line 33
+- Initial black screen: `setTimeout(..., 500)` (500ms = 0.5s)
+- Navigation brightness duration: `setTimeout(..., 1000)` (1000ms = 1s)
+- White flash duration: CSS animation `@keyframes flashWhite`
+- Dimmed opacity: `.corner-nav.dim` and `#logo.visible` - currently set to `0.2` (20%)
 
 #### Adding Content
 - **Videos**: Place video files in `static/videos/`
